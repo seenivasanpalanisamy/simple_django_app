@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>UserComments</title>
+  </head>
+  <body>
+    <h1>Details of user</h1>
+    {% for commen in comments %}
+    <ul>    
+      <li><strong>Title:</strong> {{ commen.title }}</li>
+      <ul>
+    	<li><strong>Comment:</strong> {{ commen.comment }}</li>
+      <li><strong>Date:</strong> {{ commen.commented_at }}</li>
+    </ul>
+  	</ul>
+    {% endfor %}
+  </body>
+</html>
