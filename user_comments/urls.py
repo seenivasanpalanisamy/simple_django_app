@@ -7,5 +7,7 @@ urlpatterns = [
 	url(r'^delete/$', views.delete, name='delete'),
 	url(r'^details/$', views.details, name='details'),
 	url(r'^home/$', views.stats, name='stats'),
-	url(r'^', views.stats, name='stats'),
 ]
+"""NOT YET COMPLETED"""
+handler404 = 'user_comments.views.handler404'
+handler500 = 'user_comments.views.handler500'

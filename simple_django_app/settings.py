@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gzadc2%p-5skc9lseo_bh_z&-hqbox@+r5ba5t&s)t^@wz-d^6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_LEVEL',False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS',['localhost'])
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'simple_django_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_db',
-        'USER': 'root',
-        'PASSWORD': '',
+        'ENGINE': os.environ.get('DB_ENGINE','django.db.backends.mysql'),
+        'NAME': os.environ.get('DB_NAME','django_db'),
+        'USER': os.environ.get('DB_USER','root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD',''),
     }
 }
 
