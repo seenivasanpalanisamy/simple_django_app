@@ -30,3 +30,10 @@ http://localhost:8000/details/
 http://localhost:8000/home/
 http://localhost:8000/create/?name=test1&comment=My1stdjangoapp&title=test
 ``` 
+
+PENDING TASK:
+
+1.Adding logs
+2.Proper code commenting
+3.Adding validation
+4.Cloud setup
