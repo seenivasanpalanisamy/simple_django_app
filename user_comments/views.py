@@ -4,6 +4,9 @@ import datetime
 from django.http import JsonResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import logging
+
+logger = logging.getLogger(__name__)
 # Create your views here.
 def stats(request):
     """A view of all stats."""
@@ -20,6 +23,7 @@ def create(request):
     user,created=User.objects.get_or_create(name=data['name'])
     comment=Comments.objects.create(name=user,comment=data['comment'],title=data['title'])
     comment.save()
+    logger.debug('Comment inserted')
     return JsonResponse({'status':'success'})
 
 def update(request):
@@ -33,6 +37,7 @@ def update(request):
     comments.comment=data['new_comment']
     comments.updated_at=datetime.datetime.now()
     comments.save()
+    logger.debug('Comment updated')
     return JsonResponse({'status':'success'})
 
 def delete(request):
@@ -56,9 +61,11 @@ def details(request):
     if 'name' in data:
         user=User.objects.get(name=data['name'])
         comments=Comments.objects.filter(name=user).order_by('-updated_at')[:100]
+        logger.debug('Comment fetched for user')
         return render(request, 'user_comments/details.html', {'comments': comments})
     else:
         comments=Comments.objects.order_by('-updated_at')[:100]
+        logger.debug('Comment fetched')
         return render(request, 'user_comments/details.html', {'comments': comments})
 
 """NOT YET COMPLETED"""

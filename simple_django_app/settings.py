@@ -84,7 +84,29 @@ DATABASES = {
     }
 }
 
+#logging
 
+if not os.path.exists(BASE_DIR+'/simple_django_app/logs'):
+    os.makedirs(BASE_DIR+'/simple_django_app/logs')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR+'/simple_django_app/logs/simple_django_app.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'propagate': True,
+        },
+    },
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
