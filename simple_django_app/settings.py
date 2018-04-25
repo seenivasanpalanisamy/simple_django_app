@@ -78,9 +78,11 @@ WSGI_APPLICATION = 'simple_django_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE','django.db.backends.mysql'),
+        'HOST': os.environ.get('DB_HOST','localhost'),
         'NAME': os.environ.get('DB_NAME','django_db'),
         'USER': os.environ.get('DB_USER','root'),
         'PASSWORD': os.environ.get('DB_PASSWORD',''),
+        'PORT': 3306
     }
 }
 
