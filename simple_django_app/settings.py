@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gzadc2%p-5skc9lseo_bh_z&-hqbox@+r5ba5t&s)t^@wz-d^6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG_LEVEL',False)
+DEBUG = os.environ.get('DEBUG_LEVEL',True)
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS',['localhost'])
 
@@ -100,6 +100,11 @@ LOGGING = {
         },
     },
     'loggers': {
+        'simple_django_app': {
+            'handlers': ['file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'propagate': True,
+        },
         'django': {
             'handlers': ['file'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),

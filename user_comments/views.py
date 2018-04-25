@@ -32,13 +32,19 @@ def update(request):
         data=request.GET
     elif request.method == 'POST':
         data=request.POST
-    user=User.objects.get(name=data['name'])
-    comments = Comments.objects.get(name=user,comment=data['comment'],title=data['title'])
-    comments.comment=data['new_comment']
-    comments.updated_at=datetime.datetime.now()
-    comments.save()
-    logger.debug('Comment updated')
-    return JsonResponse({'status':'success'})
+    user=User.objects.filter(name=data['name']).first()
+    if user:
+        comments = Comments.objects.get(name=user,comment=data['comment'],title=data['title'])
+        comments.comment=data['new_comment']
+        comments.updated_at=datetime.datetime.now()
+        comments.save()
+        logger.debug('Comment updated')
+        status="success"
+    else:
+        logger.debug('User not exist')
+        status="User not exist"
+
+    return JsonResponse({'status':status})
 
 def delete(request):
     """A view of all delete."""
@@ -46,9 +52,11 @@ def delete(request):
         data=request.GET
     elif request.method == 'POST':
         data=request.POST
-    user=User.objects.get(name=data['name'])
-    comment=Comments.objects.filter(name=user,comment=data['comment'],title=data['title'])
-    comment.delete()
+    user=User.objects.filter(name=data['name']).first()
+    if user:
+        comment=Comments.objects.filter(name=user,comment=data['comment'],title=data['title'])
+        comment.delete()
+        logger.debug('Comment Deleted')
     return JsonResponse({'status':'success'})
 
 def details(request):
@@ -59,10 +67,14 @@ def details(request):
         data=request.POST
 
     if 'name' in data:
-        user=User.objects.get(name=data['name'])
-        comments=Comments.objects.filter(name=user).order_by('-updated_at')[:100]
-        logger.debug('Comment fetched for user')
-        return render(request, 'user_comments/details.html', {'comments': comments})
+        user=User.objects.filter(name=data['name']).first()
+        if user:
+            comments=Comments.objects.filter(name=user).order_by('-updated_at')[:100]
+            logger.debug('Comment fetched for user')
+            return render(request, 'user_comments/details.html', {'comments': comments})
+        else:
+            logger.debug('User does not exist')
+            return JsonResponse({'status':'No Associated User'})       
     else:
         comments=Comments.objects.order_by('-updated_at')[:100]
         logger.debug('Comment fetched')
