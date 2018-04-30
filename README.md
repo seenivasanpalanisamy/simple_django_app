@@ -77,6 +77,10 @@ Permanent setup as aws EC-2 instance.
 3.Install nginx and uwsgi and config them to run multiple workers. <br />
 4.Run the django server with the help of uWSGI. <br />
 
+```
+uwsgi --http :8000 --module simple_django_app.wsgi --master --processes 100 --threads 2
+```
+
 TASK COMPLETED:
 
 1.Cloud setup <br />
