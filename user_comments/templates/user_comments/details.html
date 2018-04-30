@@ -1,17 +1,13 @@
-<html>
-  <head>
-    <title>UserComments</title>
-  </head>
-  <body>
+{% extends "user_comments/base.html" %}
+{% block content %}
     <h1>Details of user</h1>
     {% for commen in comments %}
     <ul>    
-      <li><strong>Title:</strong> {{ commen.title }}</li>
+      <li><strong>Title:</strong> {{ commen.title }}</li></br>
       <ul>
-    	<li><strong>Comment:</strong> {{ commen.comment }}</li>
-      <li><strong>Date:</strong> {{ commen.commented_at }}</li>
+    	<li><strong>Comment:</strong> {{ commen.comment }}</li></br>
+      <li><strong>Date:</strong> {{ commen.commented_at }}</li></br>
     </ul>
   	</ul>
     {% endfor %}
-  </body>
-</html>
+{% endblock %}

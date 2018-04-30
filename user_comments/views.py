@@ -80,6 +80,9 @@ def details(request):
         logger.debug('Comment fetched')
         return render(request, 'user_comments/details.html', {'comments': comments})
 
+
+def about(request):
+    return render(request, 'user_comments/about.html', {})
 """NOT YET COMPLETED"""
 
 def handler404(request):

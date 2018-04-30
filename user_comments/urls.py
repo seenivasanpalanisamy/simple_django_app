@@ -6,6 +6,7 @@ urlpatterns = [
 	url(r'^update/$', views.update, name='update'),
 	url(r'^delete/$', views.delete, name='delete'),
 	url(r'^details/$', views.details, name='details'),
+	url(r'^about/$', views.about, name='about'),
 	url(r'^home/$', views.stats, name='stats'),
 	url(r'^', views.stats, name='default'),
 ]

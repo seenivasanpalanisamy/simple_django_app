@@ -14,6 +14,29 @@ Set all environment variables needed
 eg. DEBUG_LEVEL,DB configurations,HOST etc..
 ```
 
+NGINX CONFIG:
+
+Add the following to nginx.conf file
+
+```
+server {
+    # the port your site will be served on
+    listen      80;
+    server_name host_name;   # substitute by your FQDN and machine's IP address
+    charset     utf-8;
+
+    #Max upload size
+    client_max_body_size 75M;   # adjust to taste
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+``` 
+
 RUN:
 
 ```

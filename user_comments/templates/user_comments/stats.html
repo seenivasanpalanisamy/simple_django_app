@@ -1,12 +1,8 @@
-<html>
-  <head>
-    <title>Comments</title>
-  </head>
-  <body>
-    <h1>Stats</h1>
-    <ul>
-    	<li><strong>total_comments:</strong> {{ total_comments }}</li>
-    	<li><strong>total_users:</strong> {{ total_users }}</li>
-  		</ul>
-  </body>
-</html>
+{% extends "user_comments/base.html" %}
+{% block content %}
+<h1>Stats</h1> 
+<ul> 
+	<li><strong>Total Comments:</strong> {{ total_comments }}</li> </br>
+	<li><strong>Total Users:</strong> {{ total_users }}</li> </br>
+</ul>
+{% endblock %}
