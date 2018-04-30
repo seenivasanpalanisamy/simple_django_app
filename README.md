@@ -24,11 +24,13 @@ EXAMPLE:
 
 This is an sample user commenting application with little features for create,update,delete operation.
 
-Some urls as follwed
+Some apis as follwed
 ```
 http://localhost:8000/details/
 http://localhost:8000/home/
 http://localhost:8000/create/?name=test1&comment=My1stdjangoapp&title=test
+http://localhost:8000/update/?name=test1&comment=My1stdjangoapp&title=test&new_comment=My2ndjangoapp
+http://localhost:8000/delete/?name=test1&comment=My1stdjangoapp&title=test
 ``` 
 
 USED HOSTED MYSQL:
@@ -47,15 +49,15 @@ CLOUD SETUP:
 
 Permanent setup as aws EC-2 instance.
 
-1.Create an cloud instance with python,mysql installed
-2.Clone the repo with git commands
-3.Install nginx and uwsgi and config them to run multiple workers.
-4.Run the django server with the help of uWSGI.
+1.Create an cloud instance with python,mysql installed <br />
+2.Clone the repo with git commands <br />
+3.Install nginx and uwsgi and config them to run multiple workers. <br />
+4.Run the django server with the help of uWSGI. <br />
 
 TASK COMPLETED:
 
-1.Cloud setup
-2.django application
-3.Hosted the server in cloud
-4.Git Repository
-5.Rest api's
+1.Cloud setup <br />
+2.django application <br />
+3.Hosted the server in cloud <br />
+4.Git Repository <br />
+5.Rest api's <br />
