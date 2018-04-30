@@ -43,9 +43,19 @@ Temporarily used freemysqlhosting site for db.
 'PORT': '3360'
 ```
 
-PENDING TASK:
+CLOUD SETUP:
 
-1.Adding logs
-2.Proper code commenting
-3.Adding validation
-4.Cloud setup(used already hosted mysql instead)
+Permanent setup as aws EC-2 instance.
+
+1.Create an cloud instance with python,mysql installed
+2.Clone the repo with git commands
+3.Install nginx and uwsgi and config them to run multiple workers.
+4.Run the django server with the help of uWSGI.
+
+TASK COMPLETED:
+
+1.Cloud setup
+2.django application
+3.Hosted the server in cloud
+4.Git Repository
+5.Rest api's
