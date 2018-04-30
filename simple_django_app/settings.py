@@ -27,6 +27,7 @@ DEBUG = os.environ.get('DEBUG_LEVEL',True)
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS',['localhost'])
 
+APPEND_SLASH = os.environ.get('APPEND_SLASH',False)
 
 # Application definition
 
