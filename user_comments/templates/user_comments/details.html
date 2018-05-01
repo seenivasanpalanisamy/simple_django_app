@@ -3,13 +3,13 @@
     <h1>User Comments</h1>
     {% for commen in comments %}
     <ul>    
-      <li><strong>Title:</strong> {{ commen.title }}</li></br>
+      <li><strong>Title:</strong> {{ commen.title|title }}</li></br>
       <ul>
-    	<li><strong>Comment:</strong> {{ commen.comment }}</li></br>
-      <li><strong>Date:</strong> {{ commen.commented_at }}</li></br>
       {% if commen.name.name %}
-      <li><strong>Name:</strong> {{ commen.name.name }}</li></br>
+      <li><strong>Name:</strong> {{ commen.name.name|upper }}</li></br>
       {% endif %}
+    	<li><strong>Comment:</strong> {{ commen.comment|lower|capfirst }}</li></br>
+      <li><strong>Date:</strong> {{ commen.commented_at }}</li></br></br>
     </ul>
   	</ul>
     {% endfor %}

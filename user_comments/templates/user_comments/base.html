@@ -28,6 +28,13 @@
       .active {
           background-color: #696969;
       }
+
+      div.bd {
+          border-radius: 25px;
+          border: 2px solid #73AD21;
+          padding: 20px; 
+          margin-top: 15px;
+      }
     </style>
   </head>
   <body>
@@ -36,6 +43,8 @@
       <li><a href="{% url 'details' %}">Comments</a></li>
       <li><a href="{% url 'about' %}">About</a></li>
     </ul>
-    {% block content %}{% endblock %}
+    <div class="bd">
+        {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
