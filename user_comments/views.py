@@ -7,6 +7,7 @@ from django.template import RequestContext
 import logging
 
 logger = logging.getLogger(__name__)
+
 # Create your views here.
 def stats(request):
     """A view of all stats."""
@@ -83,6 +84,7 @@ def details(request):
 
 def about(request):
     return render(request, 'user_comments/about.html', {})
+
 """NOT YET COMPLETED"""
 
 def handler404(request):
